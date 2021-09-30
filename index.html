@@ -467,51 +467,6 @@
 
 	<!-- 脚本 -->
 	<script>
-		// 是否是横屏 宽度大于高度
-		let isHorizontalScreen = window.innerWidth > window.innerHeight
-		window.onresize = () => {
-			location.reload()
-		}
-		// 屏幕变化，重新加载设置
-		(function reload() {
-			isHorizontalScreen = window.innerWidth > window.innerHeight
-			// 左侧列表
-			$('ul:nth-child(1)').css({
-				display: isHorizontalScreen ? 'block' : 'flex',
-				width: `${isHorizontalScreen ? 35 : 1300}%`,
-				height: `${isHorizontalScreen ? 100 : 35}%`,
-			}).find('li').forEach((item) => {
-				item.css({
-					width: isHorizontalScreen ? '100%' : '100vw'
-				})
-			})
-			// 右侧列表
-			$('ul:nth-child(2)').css({
-				display: isHorizontalScreen ? 'block' : 'flex',
-				width: `${isHorizontalScreen ? 65 : 1300}%`,
-				height: `${isHorizontalScreen ? 100 : 65}%`,
-				top: `${isHorizontalScreen ? 0 : 35}%`,
-				left: `${isHorizontalScreen ? 35 : 0}%`,
-			}).find('li').forEach((item) => {
-				item.css({
-					width: isHorizontalScreen ? '100%' : '100vw'
-				})
-			})
-			// 按钮组
-			$('ul:nth-child(3) li:nth-child(1) button').css({
-				transform: isHorizontalScreen ? 'translateX(-100%)' : 'translateY(-100%) rotate(-90deg)',
-				left: `${isHorizontalScreen ? 35 : 50}%`,
-				top: `${isHorizontalScreen ? 50 : 35}%`,
-				borderRadius: isHorizontalScreen ? '5px 0 0 5px' : '0 5px 5px 0'
-			})
-			$('ul:nth-child(3) li:nth-child(2) button').css({
-				transform: isHorizontalScreen ? 'translateY(-100%)' : 'translateX(-100%) rotate(-90deg)',
-				left: `${isHorizontalScreen ? 35 : 50}%`,
-				top: `${isHorizontalScreen ? 50 : 35}%`,
-				borderRadius: isHorizontalScreen ? '0 5px 5px 0' : '5px 0 0 5px'
-			})
-		})()
-
 		// 元素获取
 		function $(selector, parent = document) {
 			// 多元素
@@ -611,6 +566,51 @@
 			}
 			return ele
 		}
+
+		// 是否是横屏 宽度大于高度
+		let isHorizontalScreen = window.innerWidth > window.innerHeight
+		window.onresize = () => {
+			location.reload()
+		}
+		// 屏幕变化，重新加载设置
+		(function reload() {
+			isHorizontalScreen = window.innerWidth > window.innerHeight
+			// 左侧列表
+			$('ul:nth-child(1)').css({
+				display: isHorizontalScreen ? 'block' : 'flex',
+				width: `${isHorizontalScreen ? 35 : 1300}%`,
+				height: `${isHorizontalScreen ? 100 : 35}%`,
+			}).find('li').forEach((item) => {
+				item.css({
+					width: isHorizontalScreen ? '100%' : '100vw'
+				})
+			})
+			// 右侧列表
+			$('ul:nth-child(2)').css({
+				display: isHorizontalScreen ? 'block' : 'flex',
+				width: `${isHorizontalScreen ? 65 : 1300}%`,
+				height: `${isHorizontalScreen ? 100 : 65}%`,
+				top: `${isHorizontalScreen ? 0 : 35}%`,
+				left: `${isHorizontalScreen ? 35 : 0}%`,
+			}).find('li').forEach((item) => {
+				item.css({
+					width: isHorizontalScreen ? '100%' : '100vw'
+				})
+			})
+			// 按钮组
+			$('ul:nth-child(3) li:nth-child(1) button').css({
+				transform: isHorizontalScreen ? 'translateX(-100%)' : 'translateY(-100%) rotate(-90deg)',
+				left: `${isHorizontalScreen ? 35 : 50}%`,
+				top: isHorizontalScreen ? '50%' : 'calc(35% + 1px)',
+				borderRadius: isHorizontalScreen ? '5px 0 0 5px' : '0 5px 5px 0'
+			})
+			$('ul:nth-child(3) li:nth-child(2) button').css({
+				transform: isHorizontalScreen ? 'translateY(-100%)' : 'translateX(-100%) rotate(-90deg)',
+				left: `${isHorizontalScreen ? 35 : 50}%`,
+				top: isHorizontalScreen ? '50%' : 'calc(35% - 1px)',
+				borderRadius: isHorizontalScreen ? '0 5px 5px 0' : '5px 0 0 5px'
+			})
+		})()
 
 		// 加载进度
 		let load = 0
@@ -765,7 +765,7 @@
 					left: `${e.clientX}px`
 				})
 
-			$('ul:nth-child(2)').append(heart)
+			$('main').append(heart)
 
 			setTimeout(() => heart.remove(), 1000)
 		}
