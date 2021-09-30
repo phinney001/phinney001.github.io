@@ -1,58 +1,730 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>phinney的个人空间</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="shortcut icon" href="images/favicon.png">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="logo" height="40">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">主页
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">小说</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        电影
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">DC</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">漫威</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">其它</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">美剧</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="输入什么呢..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-            </form>
-        </div>
-    </nav>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>复仇者联盟</title>
+	<link rel="shortcut icon" href="./images/favicon.png">
+	<link rel="stylesheet" href="./iconfont/iconfont.css">
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+		}
+
+		/* 主要容器 */
+		main {
+			position: relative;
+			overflow: hidden;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		/* 列表 */
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+
+		/* 左侧列表 */
+		ul:nth-child(1) {
+			height: 100%;
+			width: 35%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: transform 0.5s ease-in-out;
+			z-index: 1;
+		}
+
+		/* 右侧列表 */
+		ul:nth-child(2) {
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 35%;
+			width: 65%;
+			transition: transform 0.5s ease-in-out;
+			cursor: pointer;
+		}
+
+		/* 列表项 */
+		li {
+			width: 100%;
+			height: 100%;
+			list-style: none;
+		}
+
+		/* 右侧列表-列表项 */
+		ul:nth-child(2) li {
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}
+
+		/* 惊奇队长 */
+		ul:nth-child(1) li:nth-child(1) {
+			background-color: #ffc20e;
+		}
+
+		/* 奇异博士 */
+		ul:nth-child(1) li:nth-child(2) {
+			background-color: #1d953f;
+		}
+
+		/* 黑豹 */
+		ul:nth-child(1) li:nth-child(3) {
+			background-color: #181d4b;
+		}
+
+		/* 蚁人 */
+		ul:nth-child(1) li:nth-child(4) {
+			background-color: #a1a3a6;
+		}
+
+		/* 蜘蛛侠 */
+		ul:nth-child(1) li:nth-child(5) {
+			background-color: #ec0922;
+		}
+
+		/* 幻视 */
+		ul:nth-child(1) li:nth-child(6) {
+			background-color: #005344;
+		}
+
+		/* 绯红女巫 */
+		ul:nth-child(1) li:nth-child(7) {
+			background-color: #d71345;
+		}
+
+		/* 鹰眼 */
+		ul:nth-child(1) li:nth-child(8) {
+			background-color: #800080;
+		}
+
+		/* 黑寡妇 */
+		ul:nth-child(1) li:nth-child(9) {
+			background-color: #8b0000;
+		}
+
+		/* 绿巨人 */
+		ul:nth-child(1) li:nth-child(10) {
+			background-color: #367459;
+		}
+
+		/* 雷神 */
+		ul:nth-child(1) li:nth-child(11) {
+			background-color: #dea32c;
+		}
+
+		/* 美国队长 */
+		ul:nth-child(1) li:nth-child(12) {
+			background-color: #224b8f;
+		}
+
+		/* 钢铁侠 */
+		ul:nth-child(1) li:nth-child(13) {
+			background-color: #b22c46;
+		}
+
+		/* 钢铁侠 */
+		ul:nth-child(2) li:nth-child(1) {
+			background-image: url('./images/avengers/iron_man.jpg');
+		}
+
+		/* 美国队长 */
+		ul:nth-child(2) li:nth-child(2) {
+			background-image: url('./images/avengers/captain_america.jpg');
+		}
+
+		/* 雷神 */
+		ul:nth-child(2) li:nth-child(3) {
+			background-image: url('./images/avengers/thor.jpg');
+		}
+
+		/* 绿巨人 */
+		ul:nth-child(2) li:nth-child(4) {
+			background-image: url('./images/avengers/hulk.jpg');
+		}
+
+		/* 黑寡妇 */
+		ul:nth-child(2) li:nth-child(5) {
+			background-image: url('./images/avengers/black_window.jpg');
+		}
+
+		/* 鹰眼 */
+		ul:nth-child(2) li:nth-child(6) {
+			background-image: url('./images/avengers/hawkeye.jpg');
+		}
+
+		/* 绯红女巫 */
+		ul:nth-child(2) li:nth-child(7) {
+			background-image: url('./images/avengers/scarlet_witch.jpg');
+		}
+
+		/* 幻视 */
+		ul:nth-child(2) li:nth-child(8) {
+			background-image: url('./images/avengers/vision.jpg');
+		}
+
+		/* 蜘蛛侠 */
+		ul:nth-child(2) li:nth-child(9) {
+			background-image: url('./images/avengers/spider_man.jpg');
+		}
+
+		/* 蚁人 */
+		ul:nth-child(2) li:nth-child(10) {
+			background-image: url('./images/avengers/ant_man.jpg');
+		}
+
+		/* 黑豹 */
+		ul:nth-child(2) li:nth-child(11) {
+			background-image: url('./images/avengers/black_panther.jpg');
+		}
+
+		/* 奇异博士 */
+		ul:nth-child(2) li:nth-child(12) {
+			background-image: url('./images/avengers/doctor_strange.jpg');
+		}
+
+		/* 惊奇队长 */
+		ul:nth-child(2) li:nth-child(13) {
+			background-image: url('./images/avengers/captain_marvel.jpg');
+		}
+
+		/* 图片动画 */
+		ul:nth-child(2) li.active {
+			animation: pulse 0.5s ease-in-out;
+		}
+
+		/* 信息 */
+		dl {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			margin: 0;
+			user-select: none;
+		}
+
+		/* 称号 */
+		dt {
+			font-size: 40px;
+			margin-bottom: 40px;
+		}
+
+		.active dt {
+			animation: pulse 0.5s ease-in-out;
+			animation-delay: 0.5s;
+		}
+
+		/* 姓名 */
+		dd {
+			margin: 0;
+		}
+
+		dd i {
+			display: inline-block;
+			font-size: 18px;
+			font-style: normal;
+			transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		}
+
+		.active dd {
+			opacity: 1;
+			transition: opacity 0.3s ease-in 0.4s;
+		}
+
+		.active dd i {
+			transform: translateY(-20px);
+		}
+
+
+		/* 按钮组 */
+		button {
+			position: absolute;
+			left: 35%;
+			top: 50%;
+			z-index: 100;
+			background-color: #fff;
+			border: none;
+			color: #ccc;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 15px;
+			overflow: hidden;
+		}
+
+		button:focus {
+			outline: none;
+		}
+
+		/* 按钮动画元素 */
+		button .circle {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			transform: translate(-50%, -50%) scale(0);
+			animation: ripper 0.5s ease-out;
+		}
+
+		/* 向下翻 */
+		ul:nth-child(3) li:nth-child(1) button {
+			transform: translateX(-100%);
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+
+		/* 向上翻 */
+		ul:nth-child(3) li:nth-child(2) button {
+			transform: translateY(-100%);
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+
+		/* 页面加载进度 */
+		var {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			z-index: 1;
+			transform: translate(-50%, -50%);
+			font-size: 50px;
+			font-style: normal;
+			color: #fff;
+		}
+
+
+		/* 心形图标 */
+		.icon-heart {
+			color: red;
+			position: fixed;
+			animation: grow 0.6s linear;
+			transform: translate(-50%, -50%) scale(0);
+		}
+
+		/* 称号&图片放大动画 */
+		@keyframes pulse {
+			from {
+				transform: scale3d(1, 1, 1);
+			}
+
+			50% {
+				transform: scale3d(1.05, 1.05, 1.05);
+			}
+
+			to {
+				transform: scale3d(1, 1, 1);
+			}
+		}
+
+		/* 按钮动画 */
+		@keyframes ripper {
+			to {
+				transform: translate(-50%, -50%) scale(3);
+				opacity: 0;
+			}
+		}
+
+		/* 心形放大动画 */
+		@keyframes grow {
+			to {
+				transform: translate(-50%, -50%) scale(10);
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 主要容器 -->
+	<main>
+		<!-- 左侧列表 -->
+		<ul>
+			<li>
+				<dl>
+					<dt>惊奇队长</dt>
+					<dd>卡罗尔·丹佛斯</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>奇异博士</dt>
+					<dd>史蒂芬·斯特兰奇</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>黑豹</dt>
+					<dd>特查拉</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>蚁人</dt>
+					<dd>斯科特·朗</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>蜘蛛侠</dt>
+					<dd>彼得·帕克</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>幻视</dt>
+					<dd>生化人</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>绯红女巫</dt>
+					<dd>旺达·马克西莫夫</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>鹰眼</dt>
+					<dd>克林特·巴顿</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>黑寡妇</dt>
+					<dd>娜塔莎·罗曼诺夫</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>绿巨人</dt>
+					<dd>布鲁斯·班纳</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>雷神</dt>
+					<dd>索尔·奥丁森</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>美国队长</dt>
+					<dd>史蒂夫·罗杰斯</dd>
+				</dl>
+			</li>
+			<li class="active">
+				<dl>
+					<dt>钢铁侠</dt>
+					<dd>托尼·史塔克</dd>
+				</dl>
+			</li>
+		</ul>
+
+		<!-- 右侧列表 -->
+		<ul>
+			<li title="钢铁侠"></li>
+			<li title="美国队长"></li>
+			<li title="雷神"></li>
+			<li title="绿巨人"></li>
+			<li title="黑寡妇"></li>
+			<li title="鹰眼"></li>
+			<li title="绯红女巫"></li>
+			<li title="幻视"></li>
+			<li title="蜘蛛侠"></li>
+			<li title="蚁人"></li>
+			<li title="黑豹"></li>
+			<li title="奇异博士"></li>
+			<li title="惊奇队长"></li>
+		</ul>
+
+		<!-- 按钮组 -->
+		<ul>
+			<li>
+				<button>
+					<i class="iconfont icon-arrow-down"></i>
+				</button>
+			</li>
+			<li>
+				<button>
+					<i class="iconfont icon-arrow-up"></i>
+				</button>
+			</li>
+		</ul>
+	</main>
+
+	<!-- 页面加载进度 -->
+	<var>0%</var>
+
+	<!-- 脚本 -->
+	<script>
+		// 元素获取
+		function $(selector, parent = document) {
+			// 多元素
+			if (typeof selector === 'string') {
+				const eleAll = parent.querySelectorAll(selector)
+				if (eleAll.length > 1) {
+					return [...eleAll].map((item, index) => $(item))
+				}
+			}
+			// 单元素
+			const ele = typeof selector === 'string'
+				? parent.querySelector(selector)
+				: selector
+			// 添加属性
+			ele.attr = (obj) => {
+				for (let key in obj) {
+					ele.setAttribute(key, obj[key])
+				}
+				return ele
+			}
+			// 添加样式
+			ele.css = (obj) => {
+				for (let key in obj) {
+					ele.style[key] = obj[key]
+				}
+				return ele
+			}
+			// 添加样式类
+			ele.addClass = (className) => {
+				if (typeof className === 'string') {
+					ele.classList.add(className)
+				}
+				if (className instanceof Array) {
+					className.forEach((cName) => {
+						if (typeof cName === 'string') {
+							ele.classList.add(cName)
+						}
+					})
+				}
+				return ele
+			}
+			// 移除样式类
+			ele.removeClass = (className) => {
+				if (typeof className === 'string') {
+					ele.classList.remove(className)
+				}
+				if (className instanceof Array) {
+					className.forEach((cName) => {
+						if (typeof cName === 'string') {
+							ele.classList.remove(cName)
+						}
+					})
+				}
+				return ele
+			}
+			// 元素文本获取设置
+			ele.text = (text) => {
+				if (text) {
+					ele.innerText = text
+					return ele
+				}
+				return ele.innerText
+			}
+			// 元素内容获取设置
+			ele.html = (html) => {
+				if (html) {
+					ele.innerHTML = html
+					return ele
+				}
+				return ele.innerHTML
+			}
+			// 元素点击事件
+			ele.click = (func) => {
+				ele.addEventListener('click', func)
+				return ele
+			}
+			// 元素覆盖事件
+			ele.hover = (startFunc, endFunc) => {
+				ele.addEventListener('mouseover', startFunc)
+				ele.addEventListener('mouseout', endFunc)
+				return ele
+			}
+			// 添加子元素
+			ele.append = (childEle) => {
+				if (childEle) {
+					ele.appendChild(childEle)
+					return $(childEle)
+				}
+				return null
+			}
+			// 查找子元素
+			ele.find = (childSelector) => {
+				if (childSelector) {
+					return $(childSelector, ele)
+				}
+				return null
+			}
+			return ele
+		}
+
+		// 加载进度
+		let load = 0
+		let interval = setInterval(loading, 30)
+		function loading() {
+			load++
+
+			if (load > 99) {
+				clearInterval(interval)
+			}
+
+			$('var').html(`${load}%`).css({
+				opacity: (load * -1) / 100 + 1
+			})
+
+			$('main').css({
+				filter: `blur(${((load * -30) / 100 + 30)}px)`
+			})
+		}
+
+		// 分割名称设置动画延迟
+		$('dd').forEach(name => {
+			name.html(name.text()
+				.split('')
+				.map((letter, i) => `<i style="transition-delay:${i * 50 + 500}ms">${letter}</i>`)
+				.join('')
+			)
+		})
+
+		// 翻页动画
+		let slideIndex = 0
+		const slidesLength = $('ul:nth-child(2)').find('li').length
+		// 设置左侧初始高度
+		$('ul:nth-child(1)').css({
+			top: `-${(slidesLength - 1) * 100}vh`
+		})
+		// 向下翻
+		$('ul:nth-child(3) li:nth-child(1) button').click(function () {
+			turn('down')
+			ripper(this)
+		}).hover(
+			function () {
+				const nextIndex = slidesLength - slideIndex + 1
+				const nextEle = $('ul:nth-child(1)').find(`li:nth-child(${nextIndex > 13 ? 1 : nextIndex})`)
+				this.css({
+					color: getComputedStyle(nextEle).backgroundColor
+				}).attr({
+					title: nextEle.find('dt').text()
+				})
+			},
+			function () {
+				this.css({
+					color: '#ccc'
+				})
+			}
+		)
+		// 向上翻
+		$('ul:nth-child(3) li:nth-child(2) button').click(function () {
+			turn('up')
+			ripper(this)
+		}).hover(
+			function () {
+				const prevIndex = slidesLength - slideIndex - 1
+				const prevEle = $('ul:nth-child(1)').find(`li:nth-child(${prevIndex || 13})`)
+				this.css({
+					color: getComputedStyle(prevEle).backgroundColor
+				}).attr({
+					title: prevEle.find('dt').text()
+				})
+			},
+			function () {
+				this.css({
+					color: '#ccc'
+				})
+			}
+		)
+		// 翻页
+		function turn(direction) {
+			// 设置选中项序列号
+			if (direction === 'up') {
+				slideIndex++
+				if (slideIndex > slidesLength - 1) {
+					slideIndex = 0
+				}
+			}
+			if (direction === 'down') {
+				slideIndex--
+				if (slideIndex < 0) {
+					slideIndex = slidesLength - 1
+				}
+			}
+
+			// 设置选中项
+			const leftActiveIndex = slidesLength - slideIndex - 1
+			$('ul:nth-child(1)').find('li').map((item, index) => {
+				if (index === leftActiveIndex) {
+					item.addClass('active')
+				} else {
+					item.removeClass('active')
+				}
+			})
+			$('ul:nth-child(2)').find('li').map((item, index) => {
+				if (index === slideIndex) {
+					item.addClass('active')
+				} else {
+					item.removeClass('active')
+				}
+			})
+
+			// 设置滚动高度
+			$('ul:nth-child(1)').css({
+				transform: `translateY(${slideIndex * 100}vh)`
+			})
+			$('ul:nth-child(2)').css({
+				transform: `translateY(-${slideIndex * 100}vh)`
+			})
+		}
+		// 按钮动画
+		function ripper(button) {
+			const circle = document.createElement('i')
+			$(circle).addClass('circle')
+				.css({
+					backgroundColor: getComputedStyle($('ul:nth-child(1)')
+						.find('.active')).backgroundColor
+				})
+
+			button.append(circle)
+
+			setTimeout(() => circle.remove(), 500)
+		}
+
+		// 点击右侧触发心形动画
+		let clickTime = 0
+		$('ul:nth-child(2)').click((e) => {
+			if (clickTime === 0) {
+				clickTime = new Date().getTime()
+			} else {
+				if ((new Date().getTime() - clickTime) < 800) {
+					heart(e)
+					clickTime = 0
+				} else {
+					clickTime = new Date().getTime()
+				}
+			}
+		})
+		// 心形动画
+		function heart(e) {
+			const heart = document.createElement('i')
+			$(heart).addClass(['iconfont', 'icon-heart'])
+				.css({
+					top: `${e.clientY}px`,
+					left: `${e.clientX}px`
+				})
+
+			$('ul:nth-child(2)').append(heart)
+
+			setTimeout(() => heart.remove(), 1000)
+		}
+	</script>
 </body>
+
 </html>
